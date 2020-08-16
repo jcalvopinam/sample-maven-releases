@@ -1,2 +1,2 @@
 # sample-maven-releases
-This is a demo project for maven releases plugin
+WIP: This is a demo project for maven releases plugin
