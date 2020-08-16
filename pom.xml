@@ -13,6 +13,7 @@
     <groupId>com.jcalvopinam</groupId>
     <artifactId>sample-maven-releases</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>sample-maven-releases</name>
     <description>This is a demo project for maven releases plugin</description>
 
@@ -20,6 +21,14 @@
     <properties>
         <java.version>11</java.version>
     </properties>
+
+    <!-- Software Configuration Management -->
+    <scm>
+        <connection>scm:git:git@github.com:juanca87/sample-maven-releases.git</connection>
+        <developerConnection>scm:git:git@github.com:juanca87/sample-maven-releases.git</developerConnection>
+        <url>https://github.com/juanca87/sample-maven-releases</url>
+        <tag>@{project.version</tag>
+    </scm>
 
     <!-- Dependencies -->
     <dependencies>
@@ -60,6 +69,18 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <goals>pre-integration-test</goals>
+                    <preparationGoals>package</preparationGoals>
+                    <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <remoteTagging>false</remoteTagging>
+                </configuration>
             </plugin>
         </plugins>
     </build>
